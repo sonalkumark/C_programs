@@ -9,11 +9,11 @@ int main(void) {
   printf("Enter production:");
   scanf("%s",input);
   p=strtok(input,"->");
-  printf("p is %s",p);
+
   q=strtok(NULL,"->");
-  printf("q is %s",q);
+
   s=strtok(q,"|");
-  printf("s is %s\n",s);
+
   while(s!=NULL)
   {
     sprintf(r[++ri],"%s",s);
@@ -33,44 +33,49 @@ int main(void) {
         {
             strcat(temp2,&r[j-1][x]);
             strcat(temp2,"|");
-              printf("temp2 is %s\n",temp2);
             break;
         }
     }
     strcat(temp2,&r[j][x]);
   }
-  
-  printf("\n");
-  printf("temp is %s\n",temp);
-  for(j=0;j<=ri;j++)
-  {
-    printf("%s\n",r[j]);
-  }
-  printf("temp2 is %s\n",temp2);
-  
-  s=strtok(temp2,"|");
-  printf("s is %s\n",s);
-  
-  while(s!=NULL)
-  {
-    sprintf(temp3[++temp3i],"%s",s);
-    s=strtok(NULL,"|");
+  if(flag==0)
+    {    printf("No left factoring\n");
+        
+    }
+    else{
+          printf("\n");
+          printf("temp is %s\n",temp);
+          for(j=0;j<=ri;j++)
+          {
+            printf("%s\n",r[j]);
+          }
+          printf("temp2 is %s\n",temp2);
+          
+          s=strtok(temp2,"|");
+          printf("s is %s\n",s);
+          
+          while(s!=NULL)
+          {
+            sprintf(temp3[++temp3i],"%s",s);
+            s=strtok(NULL,"|");
 
-  }
-  for(j=0;j<=temp3i;j++)
-  {
-    sprintf(g,"%s*%s|",p,&temp3[j]);
-    strcat(h,g);
-  }
-  printf("\n");
-  sprintf(newprod[++newprodi],"%s->%s",p,h);
-    sprintf(newprod[++newprodi],"%s*->%s",p,temp);
-    
-    printf("Result is \n");
-  for(j=0;j<=newprodi;j++)
-  {
-    printf("%s\n",newprod[j]);
-  }
-  
+          }
+
+         
+          for(j=0;j<=temp3i;j++)
+          {
+            sprintf(g,"%s*%s|",p,&temp3[j]);
+            strcat(h,g);
+          }
+          printf("\n");
+          sprintf(newprod[++newprodi],"%s->%s",p,h);
+            sprintf(newprod[++newprodi],"%s*->%s",p,temp);
+            
+            printf("Result is \n");
+          for(j=0;j<=newprodi;j++)
+          {
+            printf("%s\n",newprod[j]);
+          }
+    }
   return 0;
 }
