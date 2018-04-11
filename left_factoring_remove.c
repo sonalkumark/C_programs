@@ -44,13 +44,6 @@ int main(void) {
     }
     else{
 	  printf("\n");
-	  printf("temp is %s\n",temp);
-	  for(j=0;j<=ri;j++)
-	  {
-	    printf("%s\n",r[j]);
-	  }
-	  printf("temp2 is %s\n",temp2);
-	  printf("\n");
 
 	    sprintf(newprod[++newprodi],"%s->%s%s*",p,temp,p);
 	    sprintf(newprod[++newprodi],"%s*->%s",p,temp2);
