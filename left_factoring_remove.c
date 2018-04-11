@@ -23,59 +23,42 @@ int main(void) {
   {
     for(x=0;;x++)
     {
-        if(r[j-1][x]==r[j][x])
-        {
-            flag=1;
-            sprintf(q,"%c",r[j][x]);
-            strcat(temp,q);
-        }
-        else
-        {
-            strcat(temp2,&r[j-1][x]);
-            strcat(temp2,"|");
-            break;
-        }
+	if(r[j-1][x]==r[j][x])
+	{
+	    flag=1;
+	    sprintf(q,"%c",r[j][x]);
+	    strcat(temp,q);
+	}
+	else
+	{
+	    strcat(temp2,&r[j-1][x]);
+	    strcat(temp2,"|");
+	    break;
+	}
     }
     strcat(temp2,&r[j][x]);
   }
   if(flag==0)
     {    printf("No left factoring\n");
-        
+
     }
     else{
-          printf("\n");
-          printf("temp is %s\n",temp);
-          for(j=0;j<=ri;j++)
-          {
-            printf("%s\n",r[j]);
-          }
-          printf("temp2 is %s\n",temp2);
-          
-          s=strtok(temp2,"|");
-          printf("s is %s\n",s);
-          
-          while(s!=NULL)
-          {
-            sprintf(temp3[++temp3i],"%s",s);
-            s=strtok(NULL,"|");
+	  printf("\n");
+	  printf("temp is %s\n",temp);
+	  for(j=0;j<=ri;j++)
+	  {
+	    printf("%s\n",r[j]);
+	  }
+	  printf("temp2 is %s\n",temp2);
+	  printf("\n");
 
-          }
-
-         
-          for(j=0;j<=temp3i;j++)
-          {
-            sprintf(g,"%s*%s|",p,&temp3[j]);
-            strcat(h,g);
-          }
-          printf("\n");
-          sprintf(newprod[++newprodi],"%s->%s",p,h);
-            sprintf(newprod[++newprodi],"%s*->%s",p,temp);
-            
-            printf("Result is \n");
-          for(j=0;j<=newprodi;j++)
-          {
-            printf("%s\n",newprod[j]);
-          }
+	    sprintf(newprod[++newprodi],"%s->%s%s*",p,temp,p);
+	    sprintf(newprod[++newprodi],"%s*->%s",p,temp2);
+	    printf("Result is \n");
+	  for(j=0;j<=newprodi;j++)
+	  {
+	    printf("%s\n",newprod[j]);
+	  }
     }
   return 0;
 }
